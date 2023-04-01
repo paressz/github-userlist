@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">github user</string>
+    <string name="search">search</string>
+    <string name="search_hint">Masukan Username</string>
+    <string name="usernameText">username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="followingText">following : 2</string>
+    <string name="followerText">follower : 5</string>
+    <string name="namaText">nama Text</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_followers">Followers</string>
+    <string name="noFollowerText">Pengguna ini tidak memiliki Follower</string>
+    <string name="noFollowingText">Pengguna ini tidak mengikuti siapapun</string>
+    <string name="sadText">:(</string>
+</resources>
