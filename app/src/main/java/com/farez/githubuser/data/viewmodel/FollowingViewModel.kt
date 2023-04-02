@@ -13,16 +13,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FollowingViewModel : ViewModel() {
-    val  listFollowing = MutableLiveData<ArrayList<User>>()
-    fun setListFollowing(username : String) {
-        RetrofitClient.apiInstance
-            .getFollowing(username)
+    val listFollowing = MutableLiveData<ArrayList<User>>()
+    fun setListFollowing(username: String) {
+        RetrofitClient.apiInstance.getFollowing(username)
             .enqueue(object : Callback<ArrayList<User>> {
                 override fun onResponse(
-                    call: Call<ArrayList<User>>,
-                    response: Response<ArrayList<User>>
+                    call: Call<ArrayList<User>>, response: Response<ArrayList<User>>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         listFollowing.postValue(response.body())
                     }
                 }
@@ -32,9 +30,11 @@ class FollowingViewModel : ViewModel() {
 
             })
     }
-    fun getListFollowing() : LiveData<ArrayList<User>> {
+
+    fun getListFollowing(): LiveData<ArrayList<User>> {
         return listFollowing
     }
+
     fun showErrorToast(context: Context, errorMessage: String) {
         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
     }
