@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.farez.githubuser.api.RetrofitClient
 import com.farez.githubuser.data.local.FavoriteUser
 import com.farez.githubuser.data.local.FavoriteUserDAO
@@ -48,9 +47,9 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     fun getUserDetail(): LiveData<DetailResponse> {
         return user
     }
-    fun addToFav(username: String, id: Int) {
+    fun addToFav(username: String, id: Int, avatar_url: String?) {
         CoroutineScope(Dispatchers.IO).launch {
-            val user = FavoriteUser(username, id)
+            val user = FavoriteUser(username, id, avatar_url)
             userDAO?.addToFavorite(user)
         }
     }

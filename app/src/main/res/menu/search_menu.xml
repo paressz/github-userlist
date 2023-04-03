@@ -8,5 +8,20 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always"
         />
+    <item
+        android:id="@+id/gotofav"
+        android:icon="@drawable/round_favorite_24_white"
+        android:title="favorite"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/daynight"
+        android:icon="@drawable/ic_action_name"
+        android:title="theme"
+        android:checkable="true"
+        android:checked="false"
+        app:showAsAction="always"
+        />
+
 
 </menu>

@@ -7,11 +7,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.farez.githubuser.ui.detail.fragment.FollowersFragment
 import com.farez.githubuser.ui.detail.fragment.FollowingFragment
 
-class UserDetailAdapter( activity: AppCompatActivity, bundle: Bundle) : FragmentStateAdapter(activity) {
-    private var fbundle : Bundle
+class UserDetailAdapter(activity: AppCompatActivity, bundle: Bundle) :
+    FragmentStateAdapter(activity) {
+    private var fbundle: Bundle
+
     init {
         fbundle = bundle
     }
+
     override fun getItemCount(): Int {
         return 2
 

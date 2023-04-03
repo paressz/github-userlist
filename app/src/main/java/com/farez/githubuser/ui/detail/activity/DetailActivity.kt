@@ -21,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA = "EXTRA"
         const val EXTRA_ID = "EXTRAID"
+        const val EXTRA_AVATAR = "EXTRAAVATAR"
     }
 
     private lateinit var binding: ActivityDetailBinding
@@ -33,6 +34,7 @@ class DetailActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA)
         val id = intent.getIntExtra(EXTRA_ID, 0)
+        val avatar_url = intent.getStringExtra(EXTRA_AVATAR)
         val bundle = Bundle()
         bundle.putString(EXTRA, username.toString())
         val userDetailAdapter = UserDetailAdapter(this, bundle)
@@ -75,11 +77,11 @@ class DetailActivity : AppCompatActivity() {
         binding.toggleButton.setOnClickListener {
             _isChecked = !_isChecked
             if (_isChecked) {
-                viewModel.addToFav(username, id)
-                Toast.makeText(this,"DITAMBAHKAN KE FAVORIT",Toast.LENGTH_SHORT).show()
+                viewModel.addToFav(username, id, avatar_url)
+                Toast.makeText(this, "DITAMBAHKAN KE FAVORIT", Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.deleteFromFav(id)
-                Toast.makeText(this,"DIHAPUS DARI FAVORIT",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "DIHAPUS DARI FAVORIT", Toast.LENGTH_SHORT).show()
 
             }
             binding.toggleButton.isChecked = _isChecked

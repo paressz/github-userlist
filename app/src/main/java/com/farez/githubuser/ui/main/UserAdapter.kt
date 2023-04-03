@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.farez.githubuser.data.model.User
 import com.farez.githubuser.databinding.UserlistBinding
 
-class UserAdapter () : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val listUser = ArrayList<User>()
     private var onItemClickListener: OnItemClickListener? = null
 
@@ -16,13 +16,14 @@ class UserAdapter () : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         this.onItemClickListener = onItemClickListener
     }
 
-    fun setList(users : ArrayList<User>) {
+    fun setList(users: ArrayList<User>) {
         listUser.clear()
         listUser.addAll(users)
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view =  UserlistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = UserlistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(view)
     }
 
@@ -34,16 +35,15 @@ class UserAdapter () : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         return listUser.size
     }
 
-    inner class UserViewHolder (val binding : UserlistBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class UserViewHolder(val binding: UserlistBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.root.setOnClickListener {
                 onItemClickListener?.onItemClick(user)
             }
             binding.apply {
-                Glide.with(itemView)
-                    .load(user.avatarUrl)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(userImageView)
+                Glide.with(itemView).load(user.avatarUrl)
+                    .transition(DrawableTransitionOptions.withCrossFade()).into(userImageView)
 
                 usernameTextView.text = user.login
 
@@ -53,6 +53,6 @@ class UserAdapter () : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClick(data : User)
+        fun onItemClick(data: User)
     }
 }

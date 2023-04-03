@@ -15,11 +15,11 @@ import com.farez.githubuser.ui.main.UserAdapter
 
 
 class FollowingFragment : Fragment(R.layout.fragment_following) {
-    private var _binding : FragmentFollowingBinding? = null
+    private var _binding: FragmentFollowingBinding? = null
     private val binding get() = _binding!!
     private lateinit var followingViewModel: FollowingViewModel
     private lateinit var userRVAdapter: UserAdapter
-    private lateinit var username : String
+    private lateinit var username: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,15 +31,15 @@ class FollowingFragment : Fragment(R.layout.fragment_following) {
 
         showLoading(true)
         followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-            FollowingViewModel::class.java)
+            FollowingViewModel::class.java
+        )
         followingViewModel.setListFollowing(username)
         followingViewModel.getListFollowing().observe(viewLifecycleOwner) {
             if (it != null) {
                 showLoading(false)
                 userRVAdapter.setList(it)
                 if (userRVAdapter.itemCount == 0) binding.textView2.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 followingViewModel.showErrorToast(requireContext(), "terjadi error")
             }
 
@@ -54,9 +54,7 @@ class FollowingFragment : Fragment(R.layout.fragment_following) {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_following, container, false)
     }
@@ -65,6 +63,9 @@ class FollowingFragment : Fragment(R.layout.fragment_following) {
         super.onDestroyView()
         _binding = null
     }
-    private fun showLoading(state: Boolean) { binding.progressBar2.visibility = if (state) View.VISIBLE else View.GONE }
+
+    private fun showLoading(state: Boolean) {
+        binding.progressBar2.visibility = if (state) View.VISIBLE else View.GONE
+    }
 
 }
